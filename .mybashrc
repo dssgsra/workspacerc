@@ -1,23 +1,26 @@
 PS1="\[\e[36;1m\]\u\[\e[33;1m\]@\[\e[33;1m\]\H:\[\e[32;1m\]\w \[\e[31;1m\]$ \[\e[0m\]"
-
-alias tree='tree -C'
-alias search_code='find . -name "*.h" -or -name "*.cuh" \
-                                      -or -name "*.cpp" \
-                                      -or -name "*.cu" \
-                                      -or -name "*.cc" \
-                                      -or -name "*.c" \
-                                      -or -name "CMakeLists.txt" \
-                                      -or -name "*.proto" \
-                                      -or -name "*.prototxt" \
-                                      -or -name "*.cmake" | xargs grep -i --color=auto'
-
-alias wc_code='find . -name "*.h" -or -name "*.cuh" \
-                                  -or -name "*.cpp" \
-                                  -or -name "*.cu" \
-                                  -or -name "*.cc" \
-                                  -or -name "*.c" \
-                                  -or -name "*.proto" | xargs wc -l | sort -n'
-
-source ./.mybash/git-completion.bash
-
+alias ll='ls -l -a -h'
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 export PATH=$HOME/.bin:$PATH
+export TERM=xterm-256color
+bind -f ~/.inputrc
+
+if [ -f /etc/bash_completion ]; then
+  source /etc/bash_completion
+fi
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  source $(brew --prefix)/etc/bash_completion
+fi
+
+origin_vim=`which vim`
+vim() {
+  if [[ -f $1.h && -f $1.cpp ]]; then
+    ${origin_vim} -O $1.h $1.cpp
+  elif [[ -f $1h && -f $1cpp ]]; then
+    ${origin_vim} -O $1h $1cpp
+  else
+    ${origin_vim} $@
+  fi
+}
