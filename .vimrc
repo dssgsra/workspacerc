@@ -405,3 +405,7 @@ autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | se
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
 set t_Co=256
+
+" WSL scrolling bug
+set t_ut=""
+set ttyscroll=1
