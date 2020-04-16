@@ -384,15 +384,16 @@ endfunction
 " personal 
 execute pathogen#infect()
 
-colorscheme peaksea
+colorscheme molokai
 set nu
 set cc=80
 set fdm=syntax
 autocmd FileType python set fdm=indent
 set foldlevel=100
-set cursorline
+" disabled for scrolling lag
+" hi CursorLine cterm=NONE ctermbg=236
+set nocursorline
 set tabpagemax=18
-hi CursorLine cterm=NONE ctermbg=236
 map ,; :tabp<cr>
 map ,' :tabn<cr>
 nnoremap <space> za
@@ -409,3 +410,6 @@ set t_Co=256
 " WSL scrolling bug
 set t_ut=""
 set ttyscroll=1
+
+" delimitMate
+let delimitMate_expand_cr = 1
