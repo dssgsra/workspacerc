@@ -405,6 +405,7 @@ set complete-=i
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
+set mouse=a
 set t_Co=256
 
 " WSL scrolling bug
@@ -413,3 +414,7 @@ set ttyscroll=1
 
 " delimitMate
 let delimitMate_expand_cr = 1
+
+"nerdtree settings
+""ctrl+m to open nerdtree
+nmap <C-M> :NERDTree<CR>
