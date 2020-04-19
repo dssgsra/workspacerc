@@ -408,6 +408,10 @@ autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:las
 set mouse=a
 set t_Co=256
 
+" compile single file
+nnoremap <F9> :!g++ %:p -o %:p:h/%:p:t:r<cr>
+nnoremap <F10> :!%:p:h/%:p:t:r<cr>
+
 " WSL scrolling bug
 set t_ut=""
 set ttyscroll=1
