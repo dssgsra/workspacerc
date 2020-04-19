@@ -415,6 +415,14 @@ set ttyscroll=1
 " delimitMate
 let delimitMate_expand_cr = 1
 
-"nerdtree settings
-""ctrl+m to open nerdtree
+" nerdtree settings
 nmap <C-M> :NERDTree<CR>
+
+" clang-format
+map <Leader>cf :py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
+
+function! Formatonsave()
+    let l:formatdiff = 1
+    py3f /usr/share/vim/addons/syntax/clang-format.py
+endfunction
+autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
