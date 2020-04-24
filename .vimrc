@@ -430,3 +430,6 @@ function! Formatonsave()
     py3f /usr/share/vim/addons/syntax/clang-format.py
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+
+" use :SS to search without escaping special characters(e.g. '\')
+command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '\')
